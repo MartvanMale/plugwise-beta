@@ -124,3 +124,12 @@ def test_from_days_needs_two_switch_points() -> None:
     """Test that a week with one switch point is refused."""
     with pytest.raises(ValueError):
         from_days({"monday": [{"at": "07:00", "preset": "home"}]}, [])
+
+
+def test_slot_without_start_is_skipped() -> None:
+    """Test that a slot the library could not read does not break the schedule."""
+    slots = [
+        {"time": "[xx 07:00,mo 22:00)", "preset": "home"},
+        {"start": "mo 22:00", "end": "mo 07:00", "preset": "asleep"},
+    ]
+    assert switch_points(slots) == [(1320, {"preset": "asleep"})]

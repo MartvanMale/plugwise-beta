@@ -23,6 +23,9 @@ def switch_points(slots: list[dict[str, str | float]]) -> list[SwitchPoint]:
     """Return a schedule's switch points as week minutes, sorted."""
     points: dict[int, SlotValue] = {}
     for slot in slots:
+        # A slot whose time the library could not read has no start to place
+        if "start" not in slot:
+            continue
         # A later slot with the same start replaces an earlier one
         points[_week_minute(str(slot["start"]))] = {
             key: value for key, value in slot.items() if key not in ("start", "end")

@@ -167,7 +167,7 @@
       <CalendarEntityStateAttribute.MESSAGE: 'message'>: '15 °C',
       <CalendarEntityStateAttribute.START_TIME: 'start_time'>: '2026-10-25 08:00:00',
       'zones': list([
-        'Zone Thermostat Jessie',
+        'Jessie',
       ]),
     }),
     'context': <ANY>,
@@ -286,7 +286,7 @@
       <CalendarEntityStateAttribute.MESSAGE: 'message'>: 'Home',
       <CalendarEntityStateAttribute.START_TIME: 'start_time'>: '2026-10-25 08:00:00',
       'zones': list([
-        'CV Pomp',
+        'Woonkamer',
       ]),
     }),
     'context': <ANY>,

@@ -153,10 +153,13 @@ class PlugwiseScheduleCalendar(PlugwiseEntity, CalendarEntity):
 
     def zone_names(self, schedule: ScheduleData) -> list[str]:
         """Return the names of the zones, also when a thermostat stands for its zone."""
+        data = self.coordinator.data
         names = []
         for zone_id in schedule["zones"]:
-            for device_id, device in self.coordinator.data.items():
-                if zone_id in (device_id, device.get(LOCATION)):
-                    names.append(device.get("name", zone_id))
-                    break
+            # Adam zones are devices; an Anna stands in for its location
+            if (zone := data.get(zone_id)) is None:
+                zone = next(
+                    (dev for dev in data.values() if dev.get(LOCATION) == zone_id), {}
+                )
+            names.append(zone.get("name", zone_id))
         return names
