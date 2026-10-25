@@ -4,6 +4,7 @@ Versions from 0.40 and up
 
 ## Ongoing
 
+- Add a read-only calendar for each schedule on the gateway that shows its switch points. Add Get schedule, Set schedule, Create schedule and Delete schedule actions to read, change, add and remove schedules.
 - Add a number per preset (Home, Night, Away, Vacation, Anti-frost) to each zone that has its own presets, to set that preset's temperature. Changing one resets a manual setpoint on that zone to its active preset.
 
 ## v0.65.2
